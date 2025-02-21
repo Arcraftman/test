@@ -28,7 +28,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <skipTests>true</skipTests>
         <docker.host>unix:///var/run/docker.sock</docker.host>
         <docker.maven.plugin.version>0.40.2</docker.maven.plugin.version>
@@ -49,9 +49,9 @@
         <logstash-logback.version>7.2</logstash-logback.version>
         <minio.version>8.4.5</minio.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <mall-common.version>1.0-SNAPSHOT</mall-common.version>
-        <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
-        <mall-security.version>1.0-SNAPSHOT</mall-security.version>
+        <common.version>1.0-SNAPSHOT</common.version>
+        <mbg.version>1.0-SNAPSHOT</mbg.version>
+        <security.version>1.0-SNAPSHOT</security.version>
     </properties>
 
     <dependencies>
@@ -95,19 +95,19 @@
             <dependency>
                 <groupId>com.aoding</groupId>
                 <artifactId>common</artifactId>
-                <version>${mall-common.version}</version>
+                <version>${common.version}</version>
             </dependency>
             <!--mall中MBG生成模块-->
             <dependency>
                 <groupId>com.aoding</groupId>
                 <artifactId>mbg</artifactId>
-                <version>${mall-mbg.version}</version>
+                <version>${mbg.version}</version>
             </dependency>
             <!--mall安全模块-->
             <dependency>
                 <groupId>com.aoding</groupId>
-                <artifactId>mall-security</artifactId>
-                <version>${mall-security.version}</version>
+                <artifactId>security</artifactId>
+                <version>${security.version}</version>
             </dependency>
             <!--MyBatis分页插件starter-->
             <dependency>
@@ -200,15 +200,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <!--    <build>-->
-    <!--        <plugins>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-    <!--            </plugin>-->
-    <!--        </plugins>-->
-    <!--    </build>-->
-
-
 </project>

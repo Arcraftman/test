@@ -11,9 +11,9 @@
 
 
     <modules>
-        <module>mall-admin</module>
-        <module>mall-mbg</module>
-        <module>mall-common</module>
+        <module>admin</module>
+        <module>mbg</module>
+        <module>common</module>
     </modules>
 
     <parent>
@@ -94,13 +94,13 @@
             <!--mall通用模块-->
             <dependency>
                 <groupId>com.aoding</groupId>
-                <artifactId>mall-common</artifactId>
+                <artifactId>common</artifactId>
                 <version>${mall-common.version}</version>
             </dependency>
             <!--mall中MBG生成模块-->
             <dependency>
                 <groupId>com.aoding</groupId>
-                <artifactId>mall-mbg</artifactId>
+                <artifactId>mbg</artifactId>
                 <version>${mall-mbg.version}</version>
             </dependency>
             <!--mall安全模块-->

@@ -13,14 +13,14 @@
     <description>mall-admin for project mall-test</description>
 
     <groupId>com.aoding</groupId>
-    <artifactId>mall-admin</artifactId>
+    <artifactId>admin</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.aoding</groupId>
-            <artifactId>mall-mbg</artifactId>
+            <artifactId>mbg</artifactId>
         </dependency>
     </dependencies>
 

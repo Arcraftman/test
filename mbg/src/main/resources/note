@@ -1,0 +1,104 @@
+截至 2025 年，MyBatis 作为一个轻量级的持久层框架，仍然在企业开发中被广泛使用，并且不断在更新以适应现代开发需求。以下是 MyBatis 的一些最新技术点和趋势：
+
+1. MyBatis 最新版本
+
+MyBatis 3.x 系列：MyBatis 3 是主流版本，持续进行优化和更新。
+MyBatis 3.5.x：目前 MyBatis 最新版本主要集中在 3.5.x 系列，修复了许多 bug，并对性能和兼容性进行了改进。
+MyBatis-Plus：MyBatis-Plus 是 MyBatis 的增强工具包，提供了许多开箱即用的功能（如 CRUD 接口、分页插件等），在国内外项目中非常流行。
+
+
+2. 与 Spring Boot 的深度集成
+
+Spring Boot Starter for MyBatis：MyBatis 提供了官方的 mybatis-spring-boot-starter，可以快速整合 Spring Boot 项目。
+自动配置：通过 application.yml 或 application.properties 配置文件，可以轻松管理数据源、MyBatis 配置文件和 Mapper 接口。
+多数据源支持：MyBatis 通过 Spring Boot 的多数据源配置，支持复杂的多数据库场景。
+
+
+3. MyBatis-Plus 的流行和增强
+MyBatis-Plus（简称 MP）是对 MyBatis 的增强工具，提供了许多现代化的功能：
+
+通用 CRUD 接口：无需编写 XML 或接口实现，直接通过 BaseMapper 即可完成常见的增删改查操作。
+Lambda 表达式查询：通过 Lambda 表达式构建查询条件，避免字符串拼接带来的错误。
+分页插件：内置分页插件，支持多种数据库的分页查询。
+动态表名：支持在运行时动态设置表名，适用于分表或多租户场景。
+代码生成器：自动生成实体类、Mapper 接口、Service 层代码，提升开发效率。
+
+示例：
+// Lambda 表达式查询
+List<User> users = userMapper.selectList(
+    new QueryWrapper<User>().lambda().eq(User::getAge, 30)
+);
+
+
+4. 动态 SQL 的增强
+MyBatis 的动态 SQL 功能一直是其核心特性，最新版本进一步优化了动态 SQL 的使用：
+
+<foreach> 标签：用于批量插入、更新或查询。
+<trim> 标签：动态拼接 SQL 语句，避免多余的逗号或关键字。
+SQL 构建器：MyBatis 3.5.x 引入了基于 Java 的 SQL 构建器工具，便于动态生成 SQL。
+
+示例：
+<select id="findUsers" parameterType="map" resultType="User">
+    SELECT * FROM users
+    WHERE 1=1
+    <if test="name != null">
+        AND name = #{name}
+    </if>
+    <if test="age != null">
+        AND age = #{age}
+    </if>
+</select>
+
+
+5. 多租户支持
+多租户是企业级应用中常见的场景，MyBatis 通过插件机制支持多租户实现：
+
+MyBatis-Plus 多租户插件：支持基于字段隔离（如租户 ID）或基于表隔离的多租户实现。
+动态数据源切换：通过自定义拦截器或 Spring 的多数据源配置，实现根据租户动态切换数据源。
+
+
+6. MyBatis 的性能优化
+
+批量操作：MyBatis 提供了 <foreach> 标签和批量操作支持，可以显著提升批量插入或更新的性能。
+SQL 缓存：MyBatis 支持一级缓存和二级缓存，合理配置可以减少数据库访问次数。
+分库分表支持：结合 ShardingSphere 等分库分表中间件，MyBatis 可以很好地支持大规模数据的存储和查询。
+
+
+7. 与 Kotlin 的结合
+MyBatis 近年来对 Kotlin 的支持逐步增强，特别是在 Kotlin 的函数式编程和数据类（Data Class）方面：
+
+Kotlin DSL：通过 Kotlin DSL 构建动态 SQL。
+数据类映射：直接将查询结果映射为 Kotlin 的数据类，简化代码编写。
+
+示例：
+data class User(val id: Int, val name: String, val age: Int)
+
+val sql = SqlBuilder {
+    SELECT("*")
+    FROM("users")
+    WHERE("age > #{age}")
+}
+
+
+8. 与分布式事务支持
+在微服务架构中，分布式事务是一个重要问题。MyBatis 可以通过以下方式支持分布式事务：
+
+Seata：结合 Seata 框架，MyBatis 支持全局分布式事务管理。
+柔性事务：通过 TCC（Try-Confirm-Cancel）模式或消息队列实现事务最终一致性。
+
+
+9. 动态表名和动态数据源
+
+动态表名：通过拦截器或动态 SQL，支持在运行时动态替换表名，适用于分表场景。
+动态数据源：结合 Spring 的多数据源配置，支持运行时动态切换数据源。
+
+
+10. 未来趋势
+
+GraphQL 支持：MyBatis 社区正在探索如何更好地支持 GraphQL 查询。
+与云原生的结合：MyBatis 逐步适配云原生环境，例如与 Kubernetes、Service Mesh 的集成。
+JSON 支持：针对 JSON 数据类型的查询和映射优化，特别是在 PostgreSQL 和 MySQL 中。
+
+
+总结
+MyBatis 作为经典的 ORM 框架，在现代开发中通过不断改进和与流行技术（如 Spring Boot、MyBatis-Plus、微服务框架等）的结合，保持了强大的生命力。开发者可以根据项目需求灵活选择 MyBatis 或其增强工具（如 MyBatis-Plus）来提升开发效率。

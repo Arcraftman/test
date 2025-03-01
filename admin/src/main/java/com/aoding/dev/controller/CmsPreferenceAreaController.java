@@ -1,4 +1,4 @@
-package com.aoding.mall.controller;
+package com.aoding.dev.controller;
 
 import org.springframework.stereotype.Controller;
 
